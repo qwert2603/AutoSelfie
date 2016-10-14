@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:clickable="true"
+        android:defaultValue="false"
+        android:key="@string/preference_autoselfie_enabled"
+        android:summaryOff="@string/but_you_can_enable_it"
+        android:summaryOn="@string/but_you_can_disable_it"
+        android:title="@string/autoSelfie_disabled"
+        android:icon="@drawable/_icon"/>
+
+    <ListPreference
+        android:defaultValue="@integer/default_period"
+        android:dependency="@string/preference_autoselfie_enabled"
+        android:dialogTitle="@string/period_of_selfie"
+        android:key="@string/preference_autoselfie_period"
+        android:summary="@string/period_in_minutes"
+        android:title="@string/period_of_selfie"
+        android:icon="@drawable/hours_selector"/>
+
+    <Preference
+        android:key="@string/preference_now"
+        android:summary="@string/make_selfie_right_now"
+        android:title="@string/now"
+        android:icon="@drawable/now"/>
+
+
+    <Preference
+        android:key="@string/preference_log_out"
+        android:summary="@string/log_out_from_vk_account"
+        android:icon="@drawable/logout"
+        android:title="@string/log_out"/>
+
+</PreferenceScreen>

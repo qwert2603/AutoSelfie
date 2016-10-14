@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AutoSelfie</string>
+    <string name="login_failed">Login failed!</string>
+    <string name="now">NOW!!!</string>
+    <string name="period_in_minutes">Period in minutes</string>
+    <string name="period_of_selfie">Period of selfie</string>
+    <string name="preference_autoselfie_period">autoselfie_period</string>
+    <string name="preference_autoselfie_enabled">autoselfie_enabled</string>
+    <string name="but_you_can_disable_it">But You can disable it!</string>
+    <string name="but_you_can_enable_it">But You can enable it!</string>
+    <string name="autoSelfie_enabled">AutoSelfie enabled</string>
+    <string name="autoSelfie_disabled">AutoSelfie disabled</string>
+    <string name="choose_period">Choose period</string>
+    <string name="make_selfie_right_now">Make selfie right now</string>
+    <string name="preference_now">preference_now</string>
+    <string name="selfie_done">Selfie done</string>
+    <string name="preference_log_out">log_out</string>
+    <string name="log_out">Log out</string>
+    <string name="log_out_from_vk_account">Log out from VK account</string>
+    <string name="selfie_was_sent_to_vk">Selfie was sent to VK</string>
+</resources>

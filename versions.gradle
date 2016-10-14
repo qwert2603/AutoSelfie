@@ -1,0 +1,4 @@
+ext {
+    supportVersion = '24.2.1'
+    vksdkVersion = '1.6.7'
+}
