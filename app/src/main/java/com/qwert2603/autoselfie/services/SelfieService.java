@@ -55,7 +55,7 @@ public class SelfieService extends IntentService {
             long triggerAtMillis = SystemClock.elapsedRealtime() + periodInMillis;
             LogUtils.d("triggerAtMillis == " + triggerAtMillis);
 
-            if (Build.VERSION.SDK_INT < 19) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
                 LogUtils.d("alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtMillis, pendingIntent);");
                 alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtMillis, pendingIntent);
             } else {

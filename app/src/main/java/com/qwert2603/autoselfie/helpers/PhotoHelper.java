@@ -2,7 +2,10 @@ package com.qwert2603.autoselfie.helpers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +38,14 @@ public class PhotoHelper {
 
 
     public void getPhoto(Context context, final Callback callback) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+                callback.onError(new IllegalAccessException("Denied access to camera!!!"));
+                return;
+            }
+        }
+
         Intent intent = new Intent(context, SurfaceViewActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         int id = addCallback(callback);

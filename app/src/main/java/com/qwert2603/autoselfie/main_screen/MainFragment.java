@@ -1,12 +1,17 @@
 package com.qwert2603.autoselfie.main_screen;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 
 import com.qwert2603.autoselfie.R;
 import com.qwert2603.autoselfie.helpers.VkHelper;
@@ -15,6 +20,8 @@ import com.qwert2603.autoselfie.services.SelfieService;
 import com.qwert2603.autoselfie.utils.LogUtils;
 
 public class MainFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     private SharedPreferences mSharedPreferences;
 
@@ -27,6 +34,7 @@ public class MainFragment extends PreferenceFragment implements SharedPreference
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         addPreferencesFromResource(R.xml.preferences);
         PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, false);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -64,6 +72,22 @@ public class MainFragment extends PreferenceFragment implements SharedPreference
             getActivity().finish();
             return true;
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // checking access to camera.
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+                getActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CAMERA_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                LogUtils.e(new IllegalAccessException("Denied access to camera!!!"));
+            }
+        }
     }
 
     @Override

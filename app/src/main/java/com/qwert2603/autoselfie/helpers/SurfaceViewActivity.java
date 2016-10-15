@@ -45,6 +45,7 @@ public class SurfaceViewActivity extends Activity {
         }
 
         try {
+            LogUtils.d("getNumberOfCameras == " + Camera.getNumberOfCameras());
             final Camera camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);
             Camera.Parameters parameters = camera.getParameters();
             parameters.setRotation(270);
