@@ -35,8 +35,9 @@
 
         <activity
             android:name=".helpers.SurfaceViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:excludeFromRecents="true"
-            android:screenOrientation="portrait"
+            android:taskAffinity="com.qwert2603.autoselfie.helpers.SurfaceViewActivity"
             android:theme="@style/Theme.Transparent"/>
 
         <service

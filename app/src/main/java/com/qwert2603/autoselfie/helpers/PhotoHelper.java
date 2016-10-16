@@ -38,7 +38,6 @@ public class PhotoHelper {
 
 
     public void getPhoto(Context context, final Callback callback) {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
                 callback.onError(new IllegalAccessException("Denied access to camera!!!"));
